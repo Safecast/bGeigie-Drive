@@ -5,6 +5,8 @@ An android app which communicates with the bGeigie Zen device.
 - Supports android 14 and higher (API level 34).
 - Data is displays on a map, OpenStreetMap (standard or OpenTopo).
 - Data is recorded and saved on the android device.
+- Tested with bGeigie Zen which uses BLE (Bluetooth Low Energy). Possibly it works also with Nano without modification.
+  
 ## Usage
 - At first startup the user is asked to permit the use of both **BT** and **Location**. User MUST consent to **BT** to use the app but **Location** is optional.
 - Connect to a bGeigieZen (possibly also the Nano?) by pressing the **Connect**-button. The app will now look for nearby BGeigie devices and list them. Note: Only BT devices beginning with "bGeigie" are listed (to avoid numerous other devices). Click on a listed device to connect to it.
