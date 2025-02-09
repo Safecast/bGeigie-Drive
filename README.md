@@ -14,6 +14,7 @@ An android app which communicates with the bGeigie Zen device.
 - By clicking on the map symbol, to the right under the top banner, a menu is invoked. A number of display features can be controlled from here. When the **Scale Markers** option is selected the markers will be visible at any scale, otherwise the will be too small to see when zooming out. The **Clear Map** button will just clear the overlay, i.e. tha data in the background is NOT touched. The menu is dismissed when clicking on the button again.
 
 ## TODO
+- Tidy up the code and perhaps re-structure it a bit to make it more managable and readable.
 - Add feature to upload drive file to SafeCast with a single click once a log is stopped.
 - Add feature to load existing drive files from the android device and display them.
 - Add feature to click on a measurement marker to see full details regarding that measurement.
