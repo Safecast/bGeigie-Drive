@@ -1,0 +1,708 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/frameLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- MapView -->
+    <org.osmdroid.views.MapView
+        android:id="@+id/mapView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:contentDescription="@string/log_map_view"
+        android:focusable="true" />
+
+    <!-- Container for BT device list -->
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Transparent Banner -->
+    <View
+        android:id="@+id/bannerView"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:background="@drawable/banner_view"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginBottom="8dp" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/safecast_icon_cardView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="0dp"
+        app:layout_constraintStart_toStartOf="@id/bannerView"
+        app:layout_constraintTop_toTopOf="@id/bannerView"
+        app:layout_constraintBottom_toBottomOf="@id/bannerView"
+        android:layout_margin="16dp"
+        android:layout_marginStart="8dp">
+
+        <!-- Safecast Icon-->
+        <ImageView
+            android:id="@+id/appIconImageView"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:contentDescription="@string/app_icon"
+            android:src="@drawable/safecast" />
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- Button to connect/disconnect to bluetooth-->
+    <android.widget.Button
+        android:id="@+id/bt_connectButton"
+        android:layout_width="100dp"
+        android:layout_height="24dp"
+        android:layout_margin="12dp"
+        android:background="@drawable/button_red"
+        android:contentDescription="@string/bt_connect"
+        android:enabled="true"
+        android:textAllCaps="false"
+        android:textColor="#000000"
+        app:layout_constraintStart_toEndOf="@id/safecast_icon_cardView"
+        app:layout_constraintTop_toTopOf="@id/bannerView"
+        app:layout_constraintBottom_toBottomOf="@id/bannerView" />
+
+    <!-- Button to start/stop logging (drive)-->
+    <android.widget.Button
+        android:id="@+id/logButton"
+        android:layout_width="100dp"
+        android:layout_height="24dp"
+        android:layout_margin="12dp"
+        android:background="@drawable/button_red"
+        android:contentDescription="@string/bt_connect"
+        android:enabled="true"
+        android:textAllCaps="false"
+        android:textColor="#000000"
+        app:layout_constraintStart_toEndOf="@id/bt_connectButton"
+        app:layout_constraintTop_toTopOf="@id/bannerView"
+        app:layout_constraintBottom_toBottomOf="@id/bannerView" />
+
+    <!-- Button for settings-->
+    <android.widget.ImageButton
+        android:id="@+id/settingsButton"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginStart="12dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/settings"
+        android:src="@drawable/settings_button"
+        app:layout_constraintEnd_toEndOf="@id/bannerView"
+        app:layout_constraintTop_toTopOf="@id/bannerView"
+        app:layout_constraintBottom_toBottomOf="@id/bannerView" />
+
+    <!-- CardView for settings menu-->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/settings_menu"
+        android:layout_width="200dp"
+        android:layout_height="180dp"
+        android:layout_margin="12dp"
+        app:cardBackgroundColor="#A0000000"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="0dp"
+        app:cardUseCompatPadding="false"
+        app:layout_constraintTop_toBottomOf="@id/settingsButton"
+        app:layout_constraintEnd_toStartOf="@id/mapSettingsButtonView">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- Menu Item: CheckBox (prevent Screen Dim) -->
+            <CheckBox
+                android:id="@+id/prevent_Screen_Dim_CheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Prevent Screen Dim"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="8dp"
+                android:padding="0dp" />
+
+            <!-- Menu Item: Button (Clear Plots) -->
+            <android.widget.Button
+                android:id="@+id/clear_data_button"
+                android:layout_width="120dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="20dp"
+                android:gravity="center"
+                android:background="@drawable/button_grey"
+                android:text="Clear Data"
+                android:enabled="true"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                app:layout_constraintTop_toBottomOf="@+id/prevent_Screen_Dim_CheckBox"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <!-- Separator View -->
+            <View
+                android:id="@+id/settings_separatorView_1"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="@color/white"
+                app:layout_constraintTop_toBottomOf="@+id/clear_data_button"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Menu Item: Button (API Key) -->
+            <android.widget.Button
+                android:id="@+id/api_key_button"
+                android:layout_width="120dp"
+                android:layout_height="24dp"
+                android:layout_margin="12dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:background="@drawable/button_grey"
+                android:text="API Key"
+                android:enabled="true"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                app:layout_constraintTop_toBottomOf="@+id/settings_separatorView_1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <!-- Menu Item: Button (About/Support)-->
+            <android.widget.Button
+                android:id="@+id/about_button"
+                android:layout_width="120dp"
+                android:layout_height="24dp"
+                android:layout_margin="12dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:background="@drawable/button_grey"
+                android:text="About/Support"
+                android:enabled="true"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                app:layout_constraintTop_toBottomOf="@+id/api_key_button"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- Background for map settings button -->
+    <View
+        android:id="@+id/mapSettingsButtonView"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/map_setting_button_background"
+        app:layout_constraintTop_toBottomOf="@id/bannerView"
+        app:layout_constraintEnd_toEndOf="@id/bannerView"
+        android:layout_marginTop="9dp" />
+
+    <!-- Button for map settings-->
+    <android.widget.ImageButton
+        android:id="@+id/mapSettingsButton"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/settings"
+        android:src="@drawable/map_settings_button"
+        app:layout_constraintEnd_toEndOf="@id/mapSettingsButtonView"
+        app:layout_constraintTop_toTopOf="@id/mapSettingsButtonView" />
+
+    <!-- CardView for map settings menu-->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/map_Settings_menu"
+        android:layout_width="200dp"
+        android:layout_height="390dp"
+        android:layout_marginTop="8dp"
+        app:cardBackgroundColor="#A0000000"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="0dp"
+        app:cardUseCompatPadding="false"
+        app:layout_constraintTop_toBottomOf="@id/mapSettingsButtonView"
+        app:layout_constraintEnd_toEndOf="@id/mapSettingsButtonView">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- Menu Item 1: CheckBox (Show Info Pane) -->
+            <CheckBox
+                android:id="@+id/show_Info_Pane_CheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Show Info Pane"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="8dp"
+                android:padding="0dp" />
+
+            <!-- Menu Item 2: CheckBox (Show Legend) -->
+            <CheckBox
+                android:id="@+id/show_Legend_CheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Show Legend"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/show_Info_Pane_CheckBox"
+                android:layout_marginStart="8dp"
+                android:padding="0dp" />
+
+            <!-- Menu Item 3: CheckBox (Auto-center Map) -->
+            <CheckBox
+                android:id="@+id/auto_Center_Map_CheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Auto-center Map"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/show_Legend_CheckBox"
+                android:layout_marginStart="8dp"
+                android:padding="0dp" />
+
+            <!-- Menu Item 4: CheckBox (Scale Markers) -->
+            <CheckBox
+                android:id="@+id/scale_Markers_CheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Scale Markers"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/auto_Center_Map_CheckBox"
+                android:layout_marginStart="8dp"
+                android:padding="0dp" />
+
+            <!-- Separator View -->
+            <View
+                android:id="@+id/map_Settings_separatorView_1"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="@color/white"
+                app:layout_constraintTop_toBottomOf="@+id/scale_Markers_CheckBox"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp" />
+
+            <!-- Text for Map Selection-->
+            <TextView
+                android:id="@+id/mapSelection_Header_TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:layout_marginTop="8dp"
+                android:paddingStart="8dp"
+                android:text="Map Backround:"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/map_Settings_separatorView_1" />
+
+            <!-- Map selection -->
+            <RadioGroup
+                android:id="@+id/map_selection_RadioGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/mapSelection_Header_TextView"
+                android:layout_marginStart="8dp">
+
+                <!-- Radio Button 1: OpenStreetMap - -->
+                <RadioButton
+                    android:id="@+id/radio_option_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="OpenStreetMap"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:padding="8dp" />
+
+                <!-- Radio Button 2: OpenTopo -->
+                <RadioButton
+                    android:id="@+id/radio_option_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="OpenTopo"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:padding="8dp" />
+
+            </RadioGroup>
+
+            <!-- Separator View -->
+            <View
+                android:id="@+id/map_Settings_separatorView_2"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="@color/white"
+                app:layout_constraintTop_toBottomOf="@+id/map_selection_RadioGroup"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp" />
+
+            <android.widget.Button
+                android:id="@+id/clear_overlays_button"
+                android:layout_width="120dp"
+                android:layout_height="24dp"
+                android:layout_margin="16dp"
+                android:gravity="center"
+                android:background="@drawable/button_grey"
+                android:text="Clear Map"
+                android:enabled="true"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                app:layout_constraintTop_toBottomOf="@id/map_Settings_separatorView_2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- CardView for Info Pane -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/measurements_card"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:layout_margin="8dp"
+        app:cardBackgroundColor="#A0000000"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="0dp"
+        app:cardUseCompatPadding="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <!-- CPM value -->
+            <TextView
+                android:id="@+id/CPM_Value_TextView"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:paddingStart="8dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:textColor="@color/white"
+                android:textSize="55sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <!-- CPM unit -->
+            <TextView
+                android:id="@+id/CPM_Unit_TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:paddingStart="8dp"
+                android:text="CPM"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintBaseline_toBaselineOf="@id/CPM_Value_TextView"
+                app:layout_constraintStart_toEndOf="@id/CPM_Value_TextView" />
+            <!-- CP5S value -->
+            <TextView
+                android:id="@+id/CP5S_Value_TextView"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:paddingStart="8dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:textColor="@color/white"
+                android:textSize="55sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+            <!-- CP5S unit -->
+            <TextView
+                android:id="@+id/CP5S_Unit_TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:paddingStart="8dp"
+                android:text="CP5S"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintBaseline_toBaselineOf="@id/CP5S_Value_TextView"
+                app:layout_constraintStart_toEndOf="@id/CP5S_Value_TextView" />
+            <!-- usvh value -->
+            <TextView
+                android:id="@+id/usvh_Value_TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:gravity="end"
+                android:paddingEnd="8dp"
+                android:paddingTop="6dp"
+                android:paddingBottom="2dp"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toStartOf="@id/usvh_Unit_TextView"
+                app:layout_constraintTop_toTopOf="@id/CPM_Value_TextView" />
+            <!-- usvh unit -->
+            <TextView
+                android:id="@+id/usvh_Unit_TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:gravity="start"
+                android:paddingEnd="16dp"
+                android:paddingTop="6dp"
+                android:text="@string/sv_h"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/CPM_Value_TextView" />
+
+            <!-- Longitude label -->
+            <TextView
+                android:id="@+id/longitude_label_TextView"
+                android:layout_width="70dp"
+                android:layout_height="20dp"
+                android:gravity="end"
+                android:paddingEnd="8dp"
+                android:paddingTop="0dp"
+                android:text="Long:"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toStartOf="@id/longitude_value_TextView"
+                app:layout_constraintTop_toBottomOf="@+id/usvh_Unit_TextView" />
+
+            <!-- Longitude value -->
+            <TextView
+                android:id="@+id/longitude_value_TextView"
+                android:layout_width="90dp"
+                android:layout_height="20dp"
+                android:gravity="start"
+                android:paddingEnd="16dp"
+                android:paddingTop="0dp"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/usvh_Unit_TextView" />
+
+            <!-- Latitude label -->
+            <TextView
+                android:id="@+id/latitude_label_TextView"
+                android:layout_width="70dp"
+                android:layout_height="20dp"
+                android:gravity="end"
+                android:paddingEnd="8dp"
+                android:paddingTop="2dp"
+                android:text="Lat:"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toStartOf="@id/latitude_value_TextView"
+                app:layout_constraintTop_toBottomOf="@+id/longitude_label_TextView" />
+
+            <!-- Latitude value -->
+            <TextView
+                android:id="@+id/latitude_value_TextView"
+                android:layout_width="90dp"
+                android:layout_height="20dp"
+                android:gravity="start"
+                android:paddingEnd="16dp"
+                android:paddingTop="2dp"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/longitude_label_TextView" />
+
+            <!-- Altitude label -->
+            <TextView
+                android:id="@+id/altitude_label_TextView"
+                android:layout_width="90dp"
+                android:layout_height="20dp"
+                android:gravity="end"
+                android:paddingEnd="8dp"
+                android:paddingTop="2dp"
+                android:text="Altitude [m]:"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toStartOf="@id/altitude_value_TextView"
+                app:layout_constraintTop_toBottomOf="@+id/latitude_label_TextView" />
+
+            <!-- Altitude value -->
+            <TextView
+                android:id="@+id/altitude_value_TextView"
+                android:layout_width="90dp"
+                android:layout_height="20dp"
+                android:gravity="start"
+                android:paddingEnd="16dp"
+                android:paddingTop="2dp"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/latitude_label_TextView" />
+
+            <!-- CPM status label -->
+            <TextView
+                android:id="@+id/CPM_ind_label_TextView"
+                android:layout_width="90dp"
+                android:layout_height="20dp"
+                android:gravity="end"
+                android:paddingEnd="8dp"
+                android:paddingTop="2dp"
+                android:text="CPM:"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toStartOf="@id/CPM_ind_value_TextView"
+                app:layout_constraintTop_toBottomOf="@+id/altitude_label_TextView" />
+
+            <!-- CPM status value -->
+            <TextView
+                android:id="@+id/CPM_ind_value_TextView"
+                android:layout_width="90dp"
+                android:layout_height="20dp"
+                android:gravity="start"
+                android:paddingEnd="16dp"
+                android:paddingTop="2dp"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/altitude_value_TextView" />
+
+            <!-- CPM status indicator-->
+            <android.widget.Button
+                android:id="@+id/indicator_CPM"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginEnd="45dp"
+                android:background="@drawable/button_red"
+                android:enabled="true"
+                android:contentDescription="CPM Status"
+                app:layout_constraintEnd_toStartOf="@id/CPM_ind_value_TextView"
+                app:layout_constraintBottom_toBottomOf="@+id/CPM_ind_label_TextView" />
+
+            <!-- GPS status label -->
+            <TextView
+                android:id="@+id/GPS_ind_label_TextView"
+                android:layout_width="90dp"
+                android:layout_height="20dp"
+                android:gravity="end"
+                android:paddingEnd="8dp"
+                android:paddingTop="2dp"
+                android:text="GPS:"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toStartOf="@id/GPS_ind_value_TextView"
+                app:layout_constraintTop_toBottomOf="@+id/CPM_ind_label_TextView" />
+
+            <!-- GPS status value -->
+            <TextView
+                android:id="@+id/GPS_ind_value_TextView"
+                android:layout_width="90dp"
+                android:layout_height="20dp"
+                android:gravity="start"
+                android:paddingTop="2dp"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/CPM_ind_value_TextView" />
+
+            <!-- GPS status indicator-->
+            <android.widget.Button
+                android:id="@+id/indicator_GPS"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginEnd="45dp"
+                android:background="@drawable/button_red"
+                android:enabled="true"
+                android:contentDescription="GPS Status"
+                app:layout_constraintEnd_toStartOf="@id/GPS_ind_value_TextView"
+                app:layout_constraintBottom_toBottomOf="@+id/GPS_ind_label_TextView" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Legend -->
+    <ImageView
+        android:id="@+id/imageLegend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/legend"
+        android:layout_margin="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bannerView" />
+
+    <!-- CardView for custom toast-->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/custom_toast"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        app:cardBackgroundColor="#A0000000"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="0dp"
+        app:cardUseCompatPadding="false"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- Exclamation-->
+            <android.widget.ImageButton
+                android:id="@+id/exclamationButton"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="12dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="Exclamation"
+                android:src="@drawable/exclamation_circle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <!-- Text for centered toast message-->
+            <TextView
+                android:id="@+id/toast_Message_TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:paddingStart="8dp"
+                android:paddingEnd="16dp"
+                android:gravity="start|center_vertical"
+                app:layout_constraintStart_toEndOf="@+id/exclamationButton"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
