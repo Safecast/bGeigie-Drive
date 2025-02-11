@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace = "org.safecast.bGeigie"
-    compileSdk = 34
+    compileSdk = 30
 
     defaultConfig {
         applicationId = "org.safecast.bGeigie"
-        minSdk = 34
-        targetSdk = 34
+        minSdk = 30
+        targetSdk = 30
         versionCode = 1
         versionName = "1.0"
 
