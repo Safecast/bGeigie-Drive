@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">SafeCast Radiation Monitor</string>
+    <string name="map_description">Map showing recorded values</string>
+    <string name="title_activity_map_view">Safecast Drive</string>
+    <string name="log_map_view">log map view</string>
+    <string name="bt_connect">Connect</string>
+    <string name="settings">Settings</string>
+    <string name="app_icon">App Icon</string>
+    <string name="sv_h">μSv/h</string>
+</resources>

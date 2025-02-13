@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="150dp"
+    android:layout_height="230dp"
+    android:orientation="vertical"
+    android:background="@drawable/banner_view"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/keyTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter Your API key:"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:paddingBottom="10dp" />
+
+    <EditText
+        android:id="@+id/keyInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="API key here..."
+        android:background="@android:color/darker_gray"
+        android:padding="8dp"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+    <!-- Buttons Row (Save & Cancel) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end"
+        android:paddingTop="10dp">
+
+        <android.widget.Button
+            android:id="@+id/btnCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="Cancel"
+            android:textColor="@color/white"
+            android:background="@drawable/button_grey"
+            android:backgroundTint="@null"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:layout_marginEnd="10dp" />
+
+        <android.widget.Button
+            android:id="@+id/btnSave"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="Save"
+            android:textColor="@color/white"
+            android:background="@drawable/button_grey"
+            android:backgroundTint="@null"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp" />
+
+    </LinearLayout>
+
+</LinearLayout>
