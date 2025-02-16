@@ -2,7 +2,7 @@
 An android app which communicates with the bGeigie Zen device.
 ## Features
 **NOTE: This is currently an initial release and more testing (on other devices than a single Samsung S22) is needed before production release, i.e. this is currently a ALFA/BETA version!**
-- Supports android 14 and higher (API level 34).
+- Supports android 11 and higher (API level 30).
 - Data is displays on a map, OpenStreetMap (standard or OpenTopo).
 - Data is recorded and saved on the android device.
 - Tested with bGeigie Zen which uses BLE (Bluetooth Low Energy). It is possible that it also works with Nano without modification.
