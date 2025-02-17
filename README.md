@@ -1,31 +1,66 @@
 # bGeigie-Drive
-An android app which communicates with the bGeigie Zen device.
+
+An Android app that communicates with the bGeigie Zen device.
+
 ## Features
-**NOTE: This is currently an initial release and more testing (on other devices than a single Samsung S22) is needed before production release, i.e. this is currently a ALFA/BETA version!**
-- Supports android 11 and higher (API level 30).
-- Data is displays on a map, OpenStreetMap (standard or OpenTopo).
-- Data is recorded and saved on the android device.
-- Tested with bGeigie Zen which uses BLE (Bluetooth Low Energy). It is possible that it also works with Nano without modification.
-  
+
+**Note:**  
+This is an **initial release**. More testing is required (on devices other than the Samsung S22) before the production release. Currently, it's in an **ALPHA/BETA** stage.
+
+- Supports Android 11 and higher (API level 30).
+- Data is displayed on a map using OpenStreetMap (standard or OpenTopo).
+- Data is recorded and saved on the Android device.
+- Tested with the bGeigie Zen (which uses BLE - Bluetooth Low Energy). It may also work with the Nano without modification.
+
 ## Usage
-- At first startup the user is asked to permit the use of both **BT** and **Location**. User MUST consent to **BT** to use the app but **Location** is optional.
-- Connect to a bGeigieZen (possibly also the Nano?) by pressing the **Connect**-button. The app will now look for nearby BGeigie devices and list them. Note: Only BT devices beginning with "bGeigie" are listed (to avoid numerous other devices). Click on a listed device to connect to it.
-- The map and the Info Pane at the bottom are updated once the first message arrives. Note: Both the **CPM** and the **GPS** indicators must be green in order to receive useful data. Logging is not possible without two green lights. The numbers after the GPS are the number of satellites followed by DOP (Dilution Of Precision). The radiation values will be white below 132 CPM, yellow below 265, orange below 529 and finally red above that.
-- By clicking on the button **Start Log** logging will be initiated and by pressing **Stop Log** the logging will be stopped. Note: The log file is only written when pressing **Stop Log**. The file on the android device will be similar to the ones created and stored in the bGeigie.The log files are written to Downloads/SafeCast/DriveLogs/ folder.
-- By clicking on the gear symbol at the top right a settings menu is invoked. The button **Clear Data** WILL clear all data and also remove the from the display. Note: This will also kill logging as the log file is written when stopping the log, see above. The button **API Key** will allow the user to enter his SafeCast API Key. Note: This feature is not yet fully implemented and no file is currently uploaded. Instead, the user must connect his device to a computer, access the directory (Downloads/SafeCast/DriveLogs/) and upload a file to SafeCast from there.
-- By clicking on the map symbol, to the right under the top banner, a menu is invoked. A number of display features can be controlled from here. When the **Scale Markers** option is selected the markers will be visible at any scale, otherwise the will be too small to see when zooming out. The **Clear Map** button will just clear the overlay, i.e. tha data in the background is NOT touched. The menu is dismissed when clicking on the button again.
+
+1. **Initial Setup**  
+   - Upon first startup, the user is prompted to permit both **Bluetooth (BT)** and **Location** access.  
+   - **Bluetooth** is mandatory to use the app, while **Location** is optional.
+
+2. **Connecting to a Device**  
+   - Press the **Connect** button to initiate a connection. The app will scan for nearby bGeigie devices.  
+   - **Note:** Only BT devices beginning with "bGeigie" are listed to avoid interference from other devices. Click on a listed device to connect.
+
+3. **Viewing Data**  
+   - Once the first message arrives, both the map and the Info Pane at the bottom will update.  
+   - For data to be valid, both **CPM** (Counts Per Minute) and **GPS** indicators must be green.  
+   - The GPS indicators display the number of satellites and DOP (Dilution of Precision).  
+   - Radiation values are color-coded:
+     - White below 132 CPM
+     - Yellow below 265 CPM
+     - Orange below 529 CPM
+     - Red above 529 CPM
+
+4. **Logging Data**  
+   - Press **Start Log** to begin logging.  
+   - Press **Stop Log** to stop the logging.  
+   - **Note:** Log files are only saved when pressing **Stop Log**. Files are saved in the `Downloads/SafeCast/DriveLogs/` folder on the Android device.
+
+5. **Settings Menu**  
+   - Access the settings by clicking the gear icon in the top-right corner.
+     - **Clear Data**: Clears all data from the display and stops logging.
+     - **API Key**: Allows the user to enter a SafeCast API Key (currently not fully implemented).
+     - **Note:** No file is uploaded yet. Users need to manually upload log files to SafeCast via a computer.
+
+6. **Map Controls**  
+   - Click the map icon beneath the top banner to open the map menu.
+     - **Scale Markers**: Makes markers visible at all zoom levels. Without it, they may disappear when zooming out.
+     - **Clear Map**: Clears the overlay (but leaves background data intact).
+     - The menu is dismissed by clicking the button again.
 
 ## TODO
-- Tidy up the code and perhaps re-structure it a bit to make it more managable and readable.
-- Add feature to upload drive file to SafeCast with a single click once a log is stopped.
-- Add feature to load existing drive files from the android device and display them.
-- Add feature to click on a measurement marker to see full details regarding that measurement.
+
+- Refactor and restructure the code to improve readability and manageability.
+- Implement a feature to upload log files to SafeCast with a single click once logging is stopped.
+- Add functionality to load and display existing drive files from the Android device.
+- Allow users to click on measurement markers on the map to view full details about the measurement.
 
 ## Support
 
 - Visit [Safecast.org](https://safecast.org)
 - Join our community forums
-- Report issues on GitHub
+- Report issues on [GitHub](https://github.com)
 
 ## Credits
 
