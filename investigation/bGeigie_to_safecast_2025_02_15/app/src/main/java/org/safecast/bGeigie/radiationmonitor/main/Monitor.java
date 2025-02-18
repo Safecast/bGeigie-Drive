@@ -511,20 +511,16 @@ public class Monitor extends AppCompatActivity {
 	private static final NavigableMap<Double, Color> gradient = new TreeMap<>();
 
 	static {
-		gradient.put(-Double.MAX_VALUE, Color.valueOf(0xff160e3d));
-		gradient.put(.05, Color.valueOf(0xff190f51));
-		gradient.put(.08, Color.valueOf(0xff130ad9));
-		gradient.put(.12, Color.valueOf(0xff304eff));
-		gradient.put(.16, Color.valueOf(0xff36bcff));
-		gradient.put(.23, Color.valueOf(0xff4bedff));
-		gradient.put(.31, Color.valueOf(0xffc094ff));
-		gradient.put(.43, Color.valueOf(0xfffa24ff));
-		gradient.put(.60, Color.valueOf(0xffff038b));
-		gradient.put(.87, Color.valueOf(0xffff0323));
-		gradient.put(1.31, Color.valueOf(0xffff5c03));
-		gradient.put(2.13, Color.valueOf(0xffffc503));
-		gradient.put(3.99, Color.valueOf(0xffffff1c));
-		gradient.put(Double.MAX_VALUE, Color.valueOf(0xffffff93));
+		gradient.put(-Double.MAX_VALUE, Color.valueOf(0xff202020));
+		gradient.put(.10, Color.valueOf(0xff106e01));
+		gradient.put(.15, Color.valueOf(0xffdadbda));
+		gradient.put(.20, Color.valueOf(0xff800502));
+		gradient.put(.25, Color.valueOf(0xffe87f00));
+		gradient.put(.30, Color.valueOf(0xff626e5f));
+		gradient.put(.50, Color.valueOf(0xff2f302f));
+		gradient.put(1.00, Color.valueOf(0xff0e9bd3));
+		gradient.put(10.00, Color.valueOf(0xff04117c));
+		gradient.put(Double.MAX_VALUE, Color.valueOf(0xff96a692));
 	}
 
 	private Color getMarkerColor(double value) {
