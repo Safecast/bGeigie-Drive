@@ -14,7 +14,9 @@ constraintlayout = "2.2.0"
 preference = "1.2.1"
 bluetooth = "1.0.0-alpha02"
 playserviceslocation = "21.1.0"
-
+okhttp = "4.11.0"
+okhttpLoggingInterceptor = "4.11.0"
+gson = "2.10.1"
 
 [libraries]
 guava = { module = "com.google.guava:guava", version.ref = "guava" }
@@ -30,6 +32,9 @@ constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayo
 preference = { module = "androidx.preference:preference", version.ref = "preference" }
 bluetooth = { group = "androidx.bluetooth", name = "bluetooth", version.ref = "bluetooth" }
 playserviceslocation = { module = "com.google.android.gms:play-services-location", version.ref = "playserviceslocation" }
+okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
+okhttp-logging-interceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "okhttpLoggingInterceptor" }
+gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
